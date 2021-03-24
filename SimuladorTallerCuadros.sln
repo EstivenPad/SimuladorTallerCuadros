@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30523.141
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimuladorTallerCuadros", "SimuladorTallerCuadros\SimuladorTallerCuadros.csproj", "{0E21085A-B1A8-4100-92CB-DFBA458B94BA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0E21085A-B1A8-4100-92CB-DFBA458B94BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E21085A-B1A8-4100-92CB-DFBA458B94BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E21085A-B1A8-4100-92CB-DFBA458B94BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E21085A-B1A8-4100-92CB-DFBA458B94BA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FCDC6012-1337-408A-A09D-12BE6BB8E52C}
+	EndGlobalSection
+EndGlobal
