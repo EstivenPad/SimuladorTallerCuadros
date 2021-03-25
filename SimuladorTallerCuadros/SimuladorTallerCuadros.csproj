@@ -52,7 +52,6 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Marcos.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="MainForm.resx">
@@ -66,6 +65,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -79,6 +79,36 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Llegada.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\LlevarAlmacen.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MaquinaEmpaque.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Carpintero.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Maquina pintar.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Almacen.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Disponible.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\No disponible.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Recepcion.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Manteminiento.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
