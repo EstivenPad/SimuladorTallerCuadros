@@ -71,6 +71,7 @@ namespace SimuladorTallerCuadros
 
         public bool MarcoPintado = false;
         public bool MarcoEmpacado = false;
+        public int SuperarInspeccion = 0;
 
         public MainForm()
         {
@@ -120,6 +121,11 @@ namespace SimuladorTallerCuadros
         { 
             if (ColaDeLlegada.Count == 4)
             {
+                TiempoCarpintero2 = aleatorio.Next(2, 7);
+                TiempoCarpintero3 = aleatorio.Next(2, 7);
+                TiempoCarpintero4 = aleatorio.Next(2, 7);
+                TiempoCarpintero5 = aleatorio.Next(2, 7);
+
                 for (int i = 0; i < 4; i++)
                 {
                     ColaDeEnsamblaje.Enqueue(ColaDeLlegada.Dequeue());
@@ -127,17 +133,17 @@ namespace SimuladorTallerCuadros
             }
             else if (ColaDeLlegada.Count == 6)
             {
+                TiempoCarpintero1 = aleatorio.Next(2, 7);
+                TiempoCarpintero2 = aleatorio.Next(2, 7);
+                TiempoCarpintero3 = aleatorio.Next(2, 7);
+                TiempoCarpintero4 = aleatorio.Next(2, 7);
+                TiempoCarpintero5 = aleatorio.Next(2, 7);
+
                 for (int i = 0; i < 6; i++)
                 {
                     ColaDeEnsamblaje.Enqueue(ColaDeLlegada.Dequeue());
                 }
             }
-
-            TiempoCarpintero1 = aleatorio.Next(2, 7);
-            TiempoCarpintero2 = aleatorio.Next(2, 7);
-            TiempoCarpintero3 = aleatorio.Next(2, 7);
-            TiempoCarpintero4 = aleatorio.Next(2, 7);
-            TiempoCarpintero5 = aleatorio.Next(2, 7);
 
             HorasC1Label.Text = TiempoCarpintero1.ToString();
             HorasC2Label.Text = TiempoCarpintero2.ToString();
@@ -152,6 +158,95 @@ namespace SimuladorTallerCuadros
                 Carpintero3Timer.Enabled = true;
                 Carpintero2Timer.Enabled = true;
                 Carpintero1Timer.Enabled = true;
+            }
+        }
+
+        private void Carpintero1Timer_Tick(object sender, EventArgs e)
+        {
+            if (ColaDeEnsamblaje.Count != 0)
+            {
+                if (Carpintero1Disponible == true)
+                {
+                    HoraInicioC1 = Hora;
+                    HorasC1Label.Text = "0";
+                    ColaDeAlmacen.Enqueue(ColaDeEnsamblaje.Dequeue());
+                    Carpintero1Disponible = false;
+                    C1NoDisponiblePictureBox.Visible = true;
+                    Carpintero1PictureBox.Enabled = true;
+                }
+
+                if (TiempoCarpintero1 == 2)
+                {
+                    HorasC1Label.Text = "2";
+                    if ((HoraInicioC1 + 2) == Hora)
+                    {
+                        C1NoDisponiblePictureBox.Visible = false;
+                        Carpintero1PictureBox.Enabled = false;
+                        Carpintero1Disponible = true;
+                        MarcosEnsamblados++;
+                        MarcosEnAlmacen++;
+                        LlevarAlmacenPictureBox.Enabled = true;
+                    }
+                }
+
+                if (TiempoCarpintero1 == 3)
+                {
+                    HorasC1Label.Text = "3";
+                    if ((HoraInicioC1 + 3) == Hora)
+                    {
+                        C1NoDisponiblePictureBox.Visible = false;
+                        Carpintero1PictureBox.Enabled = false;
+                        Carpintero1Disponible = true;
+                        MarcosEnsamblados++;
+                        MarcosEnAlmacen++;
+                        LlevarAlmacenPictureBox.Enabled = true;
+                    }
+                }
+
+                if (TiempoCarpintero1 == 4)
+                {
+                    HorasC1Label.Text = "4";
+                    if ((HoraInicioC1 + 4) == Hora)
+                    {
+                        C1NoDisponiblePictureBox.Visible = false;
+                        Carpintero1PictureBox.Enabled = false;
+                        Carpintero1Disponible = true;
+                        MarcosEnsamblados++;
+                        MarcosEnAlmacen++;
+                        LlevarAlmacenPictureBox.Enabled = true;
+                    }
+                }
+
+                if (TiempoCarpintero1 == 5)
+                {
+                    HorasC1Label.Text = "5";
+                    if ((HoraInicioC1 + 5) == Hora)
+                    {
+                        C1NoDisponiblePictureBox.Visible = false;
+                        Carpintero1PictureBox.Enabled = false;
+                        Carpintero1Disponible = true;
+                        MarcosEnsamblados++;
+                        MarcosEnAlmacen++;
+                        LlevarAlmacenPictureBox.Enabled = true;
+                    }
+                }
+
+                if (TiempoCarpintero1 == 6)
+                {
+                    HorasC1Label.Text = "6";
+                    if ((HoraInicioC1 + 5) == Hora)
+                    {
+                        C1NoDisponiblePictureBox.Visible = false;
+                        Carpintero1PictureBox.Enabled = false;
+                        Carpintero1Disponible = true;
+                        MarcosEnsamblados++;
+                        MarcosEnAlmacen++;
+                        LlevarAlmacenPictureBox.Enabled = true;
+                    }
+                }
+
+                CantidadMarcosEnsambladosTextBox.Text = MarcosEnsamblados.ToString();
+                CantidadMarcosAlmacenTextBox.Text = MarcosEnsamblados.ToString();
             }
         }
 
@@ -184,7 +279,7 @@ namespace SimuladorTallerCuadros
             if (ColaPintado.Count != 0)
             {
                 MaquinaPinturaPictureBox.Enabled = true;
-                int SuperarInspeccion = aleatorio.Next(1, 11);
+                SuperarInspeccion = aleatorio.Next(1, 11);
 
                 if (MarcoPintado == false)
                 {
@@ -370,95 +465,6 @@ namespace SimuladorTallerCuadros
         {
             DeterminarTiempoSecado();
             EmpacarMarcos();
-        }
-
-        private void Carpintero1Timer_Tick(object sender, EventArgs e)
-        {
-            if(ColaDeEnsamblaje.Count != 0)
-            {
-                if (Carpintero1Disponible == true)
-                {
-                    HoraInicioC1 = Hora;
-                    HorasC1Label.Text = "0";
-                    ColaDeAlmacen.Enqueue(ColaDeEnsamblaje.Dequeue());
-                    Carpintero1Disponible = false;
-                    C1NoDisponiblePictureBox.Visible = true;
-                    Carpintero1PictureBox.Enabled = true;
-                }
-
-                if (TiempoCarpintero1 == 2)
-                {
-                    HorasC1Label.Text = "2";
-                    if ((HoraInicioC1 + 2) == Hora)
-                    {
-                        C1NoDisponiblePictureBox.Visible = false;
-                        Carpintero1PictureBox.Enabled = false;
-                        Carpintero1Disponible = true;
-                        MarcosEnsamblados++;
-                        MarcosEnAlmacen++;
-                        LlevarAlmacenPictureBox.Enabled = true;
-                    }
-                }
-
-                if (TiempoCarpintero1 == 3)
-                {
-                    HorasC1Label.Text = "3";
-                    if ((HoraInicioC1 + 3) == Hora)
-                    {
-                        C1NoDisponiblePictureBox.Visible = false;
-                        Carpintero1PictureBox.Enabled = false;
-                        Carpintero1Disponible = true;
-                        MarcosEnsamblados++;
-                        MarcosEnAlmacen++;
-                        LlevarAlmacenPictureBox.Enabled = true;
-                    }
-                }
-
-                if (TiempoCarpintero1 == 4)
-                {
-                    HorasC1Label.Text = "4";
-                    if ((HoraInicioC1 + 4) == Hora)
-                    {
-                        C1NoDisponiblePictureBox.Visible = false;
-                        Carpintero1PictureBox.Enabled = false;
-                        Carpintero1Disponible = true;
-                        MarcosEnsamblados++;
-                        MarcosEnAlmacen++;
-                        LlevarAlmacenPictureBox.Enabled = true;
-                    }
-                }
-
-                if (TiempoCarpintero1 == 5)
-                {
-                    HorasC1Label.Text = "5";
-                    if ((HoraInicioC1 + 5) == Hora)
-                    {
-                        C1NoDisponiblePictureBox.Visible = false;
-                        Carpintero1PictureBox.Enabled = false;
-                        Carpintero1Disponible = true;
-                        MarcosEnsamblados++;
-                        MarcosEnAlmacen++;
-                        LlevarAlmacenPictureBox.Enabled = true;
-                    }
-                }
-
-                if (TiempoCarpintero1 == 6)
-                {
-                    HorasC1Label.Text = "6";
-                    if ((HoraInicioC1 + 5) == Hora)
-                    {
-                        C1NoDisponiblePictureBox.Visible = false;
-                        Carpintero1PictureBox.Enabled = false;
-                        Carpintero1Disponible = true;
-                        MarcosEnsamblados++;
-                        MarcosEnAlmacen++;
-                        LlevarAlmacenPictureBox.Enabled = true;
-                    }
-                }
-
-                CantidadMarcosEnsambladosTextBox.Text = MarcosEnsamblados.ToString();
-                CantidadMarcosAlmacenTextBox.Text = MarcosEnsamblados.ToString();
-            }
         }
 
         private void Carpintero2Timer_Tick(object sender, EventArgs e)
